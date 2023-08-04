@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1"
+             x:Class="ShoppingListMobileApp1.CheckoutPageView">
+
+    <ContentPage.BindingContext>
+        <viewModels:CheckoutPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="10" Padding="20">
+
+            <!-- Order Items -->
+            <Label Text="Order Summary" FontSize="Title" HorizontalOptions="Center" />
+            <ListView ItemsSource="{Binding OrderItems}" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!-- Customize your order item UI here (e.g., display product name and quantity) -->
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding ProductName}" FontSize="Subtitle" VerticalOptions="Center" />
+                                <Label Text="{Binding Quantity}" FontSize="Subtitle" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Delivery Address -->
+            <Label Text="Delivery Address" FontSize="Title" HorizontalOptions="Center" />
+            <!-- Picker to select the delivery address -->
+            <Picker Title="Select Delivery Address" 
+                    ItemsSource="{Binding AvailableAddresses}"
+                    SelectedItem="{Binding SelectedDeliveryAddress}"
+                    Margin="0,5,0,0" />
+            <!-- Display delivery address fields here (e.g., Country, City, Address, etc.) -->
+            <!-- Use Entry or Label elements to display/edit the address properties from the ViewModel -->
+
+            <!-- Payment Information -->
+            <Label Text="Payment Information" FontSize="Title" HorizontalOptions="Center" />
+
+            <!-- Payment Options: Banka Kartı, Kredi Kartı, Havale -->
+            <StackLayout Orientation="Vertical" Spacing="5" Margin="0,10,0,0">
+                <Label Text="Payment Options" FontSize="Subtitle" />
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="PaymentOptions" Content="Banka Kartı" IsChecked="{Binding IsBankaKarti}" />
+                    <RadioButton GroupName="PaymentOptions" Content="Kredi Kartı" IsChecked="{Binding IsKrediKarti}" />
+                    <RadioButton GroupName="PaymentOptions" Content="Havale" IsChecked="{Binding IsHavale}" />
+                </StackLayout>
+            </StackLayout>
+            <!-- Place Order Button -->
+            <Button Text="Place Order" Command="{Binding PlaceOrderCommand}" HorizontalOptions="Center" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

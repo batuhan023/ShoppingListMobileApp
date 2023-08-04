@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ShoppingListMobileApp1.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ShoppingListMobileApp1"
+    Shell.FlyoutBehavior="Flyout">
+    
+    
+
+    <TabBar x:Name="MyTabBar">
+        <Tab Title="Home"
+             Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
+        </Tab>
+        <Tab Title="Cart"
+             Icon="cart.png">
+            <ShellContent ContentTemplate="{DataTemplate local:CartPageView}" Route="CartPageView"/>
+        </Tab>
+        <Tab Title="Profile"
+             Icon="user.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" Route="ProfilePage"/>
+        </Tab>
+    </TabBar>
+    
+    <ShellContent
+        Title="Login Page"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Register Page"
+        ContentTemplate="{DataTemplate local:RegisterPageView}"
+        Route="RegisterPageView" />
+    <ShellContent
+        Title="Item Page"
+        ContentTemplate="{DataTemplate local:ItemPageView}"
+        Route="ItemPageView" />
+    <ShellContent
+        Title="Profile Page"
+        ContentTemplate="{DataTemplate local:ProfilePage}"
+        Route="ProfilePage" />
+    <ShellContent
+        Title="Edit Page"
+        ContentTemplate="{DataTemplate local:EditPageView}"
+        Route="EditPageView" />
+    <ShellContent
+        Title="Cart Page"
+        ContentTemplate="{DataTemplate local:CartPageView}"
+        Route="CartPageView" />
+    <ShellContent
+        Title="Address Page"
+        ContentTemplate="{DataTemplate local:AddressPageView}"
+        Route="AddressPageView" />
+    <ShellContent
+        Title="Contact Page"
+        ContentTemplate="{DataTemplate local:ContactPageView}"
+        Route="ContactPageView" />
+    <ShellContent
+        Title="Item Detail Page"
+        ContentTemplate="{DataTemplate local:ItemDetailPageView}"
+        Route="ItemDetailPageView" />
+    <ShellContent
+        Title="Forgot Password Page"
+        ContentTemplate="{DataTemplate local:ForgotPasswordPageView}"
+        Route="ForgotPasswordPageView" />
+    <ShellContent
+        Title="Checkout Page"
+        ContentTemplate="{DataTemplate local:CheckoutPageView}"
+        Route="CheckoutPageView" />
+    <ShellContent
+        Title="Verification Page"
+        ContentTemplate="{DataTemplate local:VerificationPageView}"
+        Route="VerificationPageView" />
+    <ShellContent
+        Title="Home Page"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="HomePage" />
+    <ShellContent
+        Title="Technology Page"
+        ContentTemplate="{DataTemplate local:TechnologyPage}"
+        Route="TechnologyPage" />
+    <ShellContent
+        Title="Phones Page"
+        ContentTemplate="{DataTemplate local:PhonePage}"
+        Route="PhonePage" />
+    
+    
+    
+    
+
+
+</Shell>
+

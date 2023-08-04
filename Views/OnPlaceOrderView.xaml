@@ -1,0 +1,18 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1"
+             x:Class="ShoppingListMobileApp1.OnPlaceOrderView">
+
+    <ContentPage.BindingContext>
+        <viewModels:OnPlaceOrderViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Add UI elements here to display order details and confirm the order -->
+            <Label Text="{Binding OrderSummary}" FontSize="Subtitle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <Button Text="Place Order" Command="{Binding PlaceOrderCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

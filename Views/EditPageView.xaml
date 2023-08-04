@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingListMobileApp1.EditPageView"
+             >
+    <ScrollView>
+        <VerticalStackLayout
+                Spacing="10"
+                Padding="30,0"
+                VerticalOptions="Center">
+
+                <Image
+                    Source="monovi_logo_grey.png"
+                    SemanticProperties.Description="Welcome to Monovi Shopping List!"
+                    HeightRequest="150"
+                    WidthRequest="150"
+                    HorizontalOptions="Center"
+                    />
+                <VerticalStackLayout
+                    Spacing="10">
+                    <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image
+                        Source="avatar.png"
+                        HeightRequest="56"
+                        WidthRequest="56"
+                        HorizontalOptions="Center" />
+                        </Frame>
+                    <Label
+                    Text="Edit your information"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    />
+
+                </VerticalStackLayout>        
+                
+                <StackLayout Orientation="Horizontal">
+                        <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                            <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                        </Frame>
+                        <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                            <Entry Margin="20,0,0,0" IsReadOnly="False" VerticalOptions="Center" Placeholder="celebibasar" Keyboard="Email"></Entry>
+
+                        </Frame>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                        <Image Source="password2.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <Entry Margin="20,0,0,0" IsReadOnly="False" VerticalOptions="Center" Placeholder="******" IsPassword="True" Keyboard="Email"></Entry>
+
+                    </Frame>
+        
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                        <Image Source="email.png" HeightRequest="30" WidthRequest="30"></Image>
+
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <Entry Margin="20,0,0,0" IsReadOnly="False" VerticalOptions="Center" Placeholder="basarcelebi02@gmail.com" IsPassword="False" Keyboard="Email"></Entry>
+
+                    </Frame>
+        
+
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="15">
+                    <Button
+                        x:Name="BackBtn"
+                        Text="Back"
+                        Clicked="BackBtn_Clicked"
+                        WidthRequest="80"
+                        CornerRadius="50"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Center" />
+                    <Button
+                        x:Name="SaveBtn"
+                        Text="Save"
+                        Clicked="SaveBtn_Clicked"
+                        WidthRequest="80"
+                        CornerRadius="50"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Center" />
+
+                </StackLayout>
+                
+        
+                
+            </VerticalStackLayout>
+        </ScrollView>
+</ContentPage>

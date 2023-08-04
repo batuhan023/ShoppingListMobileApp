@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1"
+             x:Class="ShoppingListMobileApp1.EditAddressPage">
+    <ContentPage.BindingContext>
+        <viewModels:AddressViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Edit Address" FontSize="Title" HorizontalOptions="Center" />
+            <!-- Name Entry -->
+            <Entry Text="{Binding EditedAddress.Name}" Placeholder="Enter Country" />
+            <!-- Country Entry -->
+            <Entry Text="{Binding EditedAddress.Country}" Placeholder="Enter Country" />
+            <!-- City Entry -->
+            <Entry Text="{Binding EditedAddress.City}" Placeholder="Enter City" />
+            <!-- Neighborhood Entry -->
+            <Entry Text="{Binding EditedAddress.Neighborhood}" Placeholder="Enter Neighborhood" />
+            <!-- Postal Code Entry -->
+            <Entry Text="{Binding EditedAddress.PostalCode}" Placeholder="Enter Postal Code" />
+            <!-- Address Text Entry -->
+            <Entry Text="{Binding EditedAddress.AddressText}" Placeholder="Enter Address" />
+
+            <StackLayout Orientation="Horizontal" Padding="10" Margin="10,10,10,10" Spacing="10" HorizontalOptions="CenterAndExpand">
+                <Button Text="Save Changes" Command="{Binding SaveChangesCommand}"
+                    WidthRequest="150"
+                        CornerRadius="50"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Center"/>
+                <Button Text="Back" Command="{Binding CancelCommand}"
+                    WidthRequest="100"
+                        CornerRadius="50"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Center"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

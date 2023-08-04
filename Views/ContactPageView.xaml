@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingListMobileApp1.ContactPageView">
+
+    <StackLayout Margin="20">
+
+        <Label Text="Ad" FontSize="Medium" />
+        <Entry Placeholder="Adınızı girin" x:Name="txtAd" />
+
+        <Label Text="Soyad" FontSize="Medium" />
+        <Entry Placeholder="Soyadınızı girin" x:Name="txtSoyad" />
+
+        <Label Text="E-posta" FontSize="Medium" />
+        <Entry Placeholder="E-posta adresinizi girin" x:Name="txtEmail" />
+
+        <Label Text="Mesaj" FontSize="Medium" />
+        <Editor Placeholder="Mesajınızı girin" x:Name="txtMesaj" HeightRequest="100" />
+
+        <Button Text="Gönder" Clicked="OnGonderClicked"
+                WidthRequest="200"
+                        CornerRadius="50"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Center"/>
+
+    </StackLayout>
+
+</ContentPage>

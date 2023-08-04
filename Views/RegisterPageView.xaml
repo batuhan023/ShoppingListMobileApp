@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingListMobileApp1.RegisterPageView">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="10"
+            Padding="30,0"
+            VerticalOptions="StartAndExpand">
+
+            <Image
+                Source="monovi_logo_grey.png"
+                SemanticProperties.Description="Welcome to Monovi Shopping List!"
+                HeightRequest="100"
+                WidthRequest="100"
+                HorizontalOptions="Center" />
+            <VerticalStackLayout
+                Spacing="5">
+                <Label
+                Text="Welcome to Monovi Shopping List
+                    Register Page!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="16"
+                
+                HorizontalTextAlignment="Center"
+                />
+                
+
+            </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Name" Keyboard="Email"></Entry>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry  VerticalOptions="Center" Placeholder="Surname" Keyboard="Email"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame  HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Username" Keyboard="Email"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Keyboard="Email"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Re-password"  Keyboard="Text"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Label
+                Text="Birth Date:"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="14"
+                Padding="3"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                />
+                
+                <DatePicker FontSize="14" x:Name="birthDatePicker" Date="{Binding BirthDate}" VerticalOptions="Center"/>
+                
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                 <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Label
+                Text="Gender:"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="14"
+                Padding="3"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                />
+                <RadioButton VerticalOptions="Center" FontSize="14" x:Name="maleRadioButton" Content="Male" />
+                <RadioButton VerticalOptions="Center" FontSize="14" x:Name="femaleRadioButton" Content="Female" />
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="City"  Keyboard="Text"></Entry>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry VerticalOptions="Center" Placeholder="Country"  Keyboard="Text"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Town"  Keyboard="Text"></Entry>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry VerticalOptions="Center" Placeholder="District"  Keyboard="Text"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            
+
+            <Button
+                x:Name="SignUpBtn"
+                Text="Sign Up"
+                SemanticProperties.Hint="You can login to your account!"
+                WidthRequest="100"
+                CornerRadius="50"
+                TextColor="Black"
+                FontAttributes="Bold"
+                BackgroundColor="Red"
+                HorizontalOptions="Center"
+                Clicked="SignUpBtn_Clicked"/>
+            
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
