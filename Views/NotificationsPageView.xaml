@@ -1,0 +1,51 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1.ViewModels"
+             xmlns:models="clr-namespace:ShoppingListMobileApp1.Models"
+             x:Class="ShoppingListMobileApp1.NotificationsPageView"
+             >
+    <ContentPage.BindingContext>
+        <viewModels:NotificationsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Notifications" FontSize="Title" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <ListView x:Name="NotificationsListView" ItemsSource="{Binding Notifications}" SelectedItem="{Binding SelectedNotification}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5" HeightRequest="60">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Title}" FontSize="Medium" />
+                                <Label Text="{Binding Message}" FontSize="Small" Grid.Row="1" />
+                                <Label Text="{Binding Date}" FontSize="Micro" Grid.Row="1" VerticalOptions="End" />
+                                <Label x:Name="NotificationCountLabel"
+                                       Text="{Binding NotificationCount, StringFormat='Notifications: {0}'}"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       TextColor="Red"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Start" />
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="EndAndExpand">
+                                    <Button Text="Delete" Command="{Binding Path=BindingContext.DeleteNotificationCommand, Source={x:Reference NotificationsListView}}" CommandParameter="{Binding .}" />
+                                    <Button Text="Show" Clicked="ShowButton_Clicked" CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout x:Name="AddNotificationLayout" IsVisible="{Binding IsAddingNotification}">
+                <Label Text="Add New Notification" FontSize="Medium" HorizontalOptions="CenterAndExpand" Margin="0,10,0,5" />
+                <Entry Placeholder="Title" Text="{Binding NewTitle}" />
+                <Entry Placeholder="Message" Text="{Binding NewMessage}" />
+                <Button Text="Save" Command="{Binding SaveNotificationCommand}" />
+                <Button Text="Cancel" Command="{Binding CancelAddNotificationCommand}" />
+            </StackLayout>
+            <Button Text="Add Notification" Command="{Binding AddNotificationCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

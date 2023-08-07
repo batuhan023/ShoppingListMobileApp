@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1"
              x:Class="ShoppingListMobileApp1.ItemDetailPageView"
              BackgroundColor="White"
              >
+    <ContentPage.BindingContext>
+        <viewModels:ItemDetailPageViewModel/>
+    </ContentPage.BindingContext>
     <Grid Margin="15" RowDefinitions=".4*,.1*,.1*,.4*" Padding="5">
         <Border Grid.RowSpan="2">
             <Border.StrokeShape>
@@ -12,7 +16,7 @@
             <Grid RowDefinitions=".3*,.7*">
                 <Image Grid.RowSpan="2"
                        Aspect="AspectFill"
-                       Source="laptop.jpeg"/>
+                       Source="{Binding ProductImage}"/>
                 <Grid ColumnDefinitions="*,*">
                     <Border Margin="15,35,0,0"
                             BackgroundColor="White"
@@ -69,20 +73,20 @@
                        FontAttributes="Bold"
                        FontFamily="RubikRegular"
                        FontSize="20"
-                       Text="MacBook Air M1 Chip"
+                       Text="{Binding ProductName}"
                        TextColor="White"/>
                 <Label Grid.Column="2"
                        FontAttributes="Bold"
                        FontFamily="RubikRegular"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
-                       Text="$50"
+                       Text="{Binding Price}"
                        TextColor="Brown"/>
                 <Label Grid.Row="1"
                        Grid.ColumnSpan="2"
                        FontFamily="RubikLight"
                        FontSize="15"
-                       Text="Apple"
+                       Text="{Binding Brand}"
                        TextColor="White"/>
                 <HorizontalStackLayout Grid.Row="2" Spacing="10">
                     <Label FontFamily="Icons"
@@ -108,7 +112,8 @@
                         Grid.ColumnSpan="2"
                         BackgroundColor="Brown"
                         FontFamily="RubikRegular"
-                        Text="Add to Cart"/>
+                        Text="Add to Cart"
+                        Command="{Binding AddToCartCommand}"/>
 
 
             </Grid>

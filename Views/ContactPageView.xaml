@@ -3,19 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShoppingListMobileApp1.ContactPageView">
 
-    <StackLayout Margin="20">
+    <StackLayout Margin="20, -20, 20, 20" Spacing="10" Padding="20" VerticalOptions="Center">
 
+        <Image
+            Source="monovi_logo_grey.png"
+            SemanticProperties.Description="Welcome to Monovi Shopping List!"
+            HeightRequest="75"
+            WidthRequest="150"
+            HorizontalOptions="Center"/>
+        <Label Text="       Have any questions? &#10;We'd love to hear from you." FontSize="Caption" HorizontalOptions="Center" />
         <Label Text="Ad" FontSize="Medium" />
-        <Entry Placeholder="Adınızı girin" x:Name="txtAd" />
+        <Frame HeightRequest="50"
+                    Padding="0">
+            <Entry Placeholder="Adınızı girin" x:Name="txtAd" />
+        </Frame>
 
         <Label Text="Soyad" FontSize="Medium" />
-        <Entry Placeholder="Soyadınızı girin" x:Name="txtSoyad" />
+        <Frame HeightRequest="50"
+                    Padding="0">
+            <Entry Placeholder="Soyadınızı girin" x:Name="txtSoyad" />
+        </Frame>
 
         <Label Text="E-posta" FontSize="Medium" />
-        <Entry Placeholder="E-posta adresinizi girin" x:Name="txtEmail" />
+        <Frame HeightRequest="50"
+                    Padding="0">
+            <Entry Placeholder="E-posta adresinizi girin" x:Name="txtEmail" />
+        </Frame>
 
         <Label Text="Mesaj" FontSize="Medium" />
-        <Editor Placeholder="Mesajınızı girin" x:Name="txtMesaj" HeightRequest="100" />
+        <Frame HeightRequest="100"
+                    Padding="0">
+            <Editor Placeholder="Mesajınızı girin" x:Name="txtMesaj" HeightRequest="100" />
+        </Frame>
 
         <Button Text="Gönder" Clicked="OnGonderClicked"
                 WidthRequest="200"

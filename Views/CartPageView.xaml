@@ -4,7 +4,7 @@
              x:Class="ShoppingListMobileApp1.CartPageView"
              >
     <ScrollView>
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
@@ -19,10 +19,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            
+
             <!--Page title-->
-            
+
             <Label Text="Your Cart"
                TextColor="Black"
                Grid.Row="0"
@@ -32,16 +33,17 @@
                HorizontalOptions="Center"
                Padding="5"
                FontSize="Large"/>
-            
+
             <!-- products list -->
-            
+
             <Frame Grid.Column="0"
                    Grid.Row="1"
                    Margin="10"
                    BorderColor="Red"
                    HasShadow="True"
                    CornerRadius="10"
-                   Padding="0">
+                   Padding="0"
+                   x:Name="ImageFrame">
                 <Image HeightRequest="160"
                        WidthRequest="120"
                        Source="{Binding Image}"/>
@@ -53,6 +55,7 @@
                    HasShadow="True"
                    CornerRadius="10"
                    HeightRequest="160"
+                   x:Name="DetailFrame"
                    >
                 <StackLayout>
                     <StackLayout Margin="15,0">
@@ -61,7 +64,7 @@
                         <Label Text="{Binding Description}" FontSize="Small"/>
                         <Label Text="{Binding Price}" FontSize="Small"/>
                     </StackLayout>
-            
+
                     <HorizontalStackLayout HorizontalOptions="Center"
                                            Margin="0,20,0,0">
                         <Frame  HeightRequest="10"
@@ -70,10 +73,11 @@
                                 HasShadow="True"
                                 CornerRadius="0">
                             <ImageButton Source="minus.png"
+                                         Clicked="ImageButton_Decrease"
                                  HeightRequest="10"
                                  WidthRequest="10"/>
                         </Frame>
-                        <Label Text="1"
+                        <Label x:Name="count" Text="1"
                                Margin="7,0,7,0"/>
                         <Frame  HeightRequest="10"
                                 BackgroundColor="LightGray"
@@ -81,6 +85,7 @@
                                 HasShadow="True"
                                 CornerRadius="0">
                             <ImageButton Source="plus2.png"
+                                         Clicked="ImageButton_Increase"
                                  HeightRequest="10"
                                  WidthRequest="10"/>
                         </Frame>
@@ -94,13 +99,15 @@
                    HeightRequest="10"
                    WidthRequest="10"
                    CornerRadius="0"
-                   BorderColor="Red">
+                   BorderColor="Red"
+                   x:Name="ButtonCloseFrame">
                 <ImageButton Source="close.png"
                              HeightRequest="10"
-                             WidthRequest="10"/>
+                             WidthRequest="10"
+                             Clicked="ImageButton_Close"/>
 
             </Frame>
-            
+
             <!--product2-->
 
             <Frame Grid.Column="0"
@@ -168,7 +175,7 @@
                              WidthRequest="10"/>
 
             </Frame>
-            
+
             <!--product3-->
 
             <Frame Grid.Column="0"
@@ -236,7 +243,7 @@
                              WidthRequest="10"/>
 
             </Frame>
-            
+
             <!--product4-->
             <Frame Grid.Column="0"
                    Grid.Row="4"
@@ -303,7 +310,7 @@
                              WidthRequest="10"/>
 
             </Frame>
-            
+
             <!--product5-->
 
             <Frame Grid.Column="0"
@@ -400,14 +407,14 @@
                             WidthRequest="100"
                             Clicked="Button_Clicked_Checkout"/>
                 </HorizontalStackLayout>
-                
+
 
             </Frame>
 
 
-                <!--tab bar-->
+            <!--tab bar-->
 
-            <!--<Grid Grid.Row="7"
+            <Grid Grid.Row="7"
                   Grid.ColumnSpan="3"
                   Margin="15,0,15,10"
                   HeightRequest="75"
@@ -484,7 +491,7 @@
                 </Border>
 
 
-            </Grid>-->
+            </Grid>
 
         </Grid>
 

@@ -90,6 +90,9 @@
 	  <MauiXaml Update="Views\ItemPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NotificationsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\OnPlaceOrderView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

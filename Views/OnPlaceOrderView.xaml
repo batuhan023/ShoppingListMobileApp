@@ -8,10 +8,51 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout>
-            <!-- Add UI elements here to display order details and confirm the order -->
-            <Label Text="{Binding OrderSummary}" FontSize="Subtitle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-            <Button Text="Place Order" Command="{Binding PlaceOrderCommand}" />
+        <StackLayout Spacing="10" Padding="20">
+            <Label Text="Details" FontSize="Title" HorizontalOptions="Center" />
+            <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" Margin="0, -50, 0, 0">
+                <Image Aspect="AspectFill"
+                       Source="shopping_done.png"
+                       HeightRequest="125"
+                       WidthRequest="125"
+                       HorizontalOptions="Center"
+                       Margin="0, 0, 0, 20"/>
+                <Label Text="Thanks for shopping!" FontSize="Medium" HorizontalOptions="Center" />
+                <Label Text="We have received your order and are getting it ready to be shipped. We will notify you when it's on it's way!" FontSize="Small" HorizontalOptions="Center" />
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <Label Text="HAVE QUESTIONS?" FontSize="Small" HorizontalOptions="Start" Padding="20, 0, 0, 0" />
+                    <Label HorizontalOptions="End" Padding="0, 0, 20, 0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="REACH OUT TO US" 
+                                      TextColor="OrangeRed" 
+                                      TextDecorations="Underline"
+                                      FontSize="Small">
+                                    <!--<Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://learn.microsoft.com/dotnet/maui/" />
+                                    </Span.GestureRecognizers>-->
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+                <StackLayout Padding="0, 10, 0, 10">
+                    <Line Stroke="lightgray" X2="400" StrokeDashArray="1,1" StrokeDashOffset="6" StrokeThickness="4"/>
+                </StackLayout>
+                <!-- Add UI elements here to display order details and confirm the order -->
+                <Frame HeightRequest="125"
+                    Padding="0">
+                    <VerticalStackLayout 
+                        Padding="25"
+                        VerticalOptions="CenterAndExpand">
+                        <Label Text="{Binding OrderSummary}" FontSize="Subtitle" HorizontalOptions="CenterAndExpand" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Button Text="Place Order" 
+                        Command="{Binding PlaceOrderCommand}" 
+                        Grid.Row="1"/>
+            </VerticalStackLayout>
         </StackLayout>
     </ContentPage.Content>
 

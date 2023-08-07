@@ -6,6 +6,8 @@ namespace ShoppingListMobileApp1;
 
 public partial class CartPageView : ContentPage
 {
+    int clickCountTotal;
+
     public ObservableCollection<Products> product { get; set; }
     public CartPageView()
     {
@@ -53,4 +55,28 @@ public partial class CartPageView : ContentPage
         Navigation.PushAsync(new CheckoutPageView());
     }
 
+    private void ImageButton_Decrease(object sender, EventArgs e)
+    {
+        if (clickCountTotal == 1)
+        {
+            ImageFrame.IsVisible = false;
+            DetailFrame.IsVisible = false;
+            ButtonCloseFrame.IsVisible = false;
+        }
+        clickCountTotal -= 1;
+        count.Text = $"{clickCountTotal}";
+    }
+
+    private void ImageButton_Increase(object sender, EventArgs e)
+    {
+        clickCountTotal += 1;
+        count.Text = $"{clickCountTotal}";
+    }
+
+    private void ImageButton_Close(object sender, EventArgs e)
+    {
+        ImageFrame.IsVisible = false;
+        DetailFrame.IsVisible = false;
+        ButtonCloseFrame.IsVisible = false;
+    }
 }

@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1"
              x:Class="ShoppingListMobileApp1.RegisterPageView">
+    <ContentPage.BindingContext>
+        <viewModels:RegisterPageViewModel/>
+    </ContentPage.BindingContext>
 
     <ScrollView>
+
         <VerticalStackLayout
             Spacing="10"
             Padding="30,0"
@@ -34,11 +39,11 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Name" Keyboard="Email"></Entry>
+                    <Entry Text="{Binding NewName}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Name" Keyboard="Email"></Entry>
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry  VerticalOptions="Center" Placeholder="Surname" Keyboard="Email"></Entry>
+                    <Entry Text="{Binding NewSurname}" VerticalOptions="Center" Placeholder="Surname" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -49,7 +54,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email"></Entry>
+                    <Entry Text="{Binding NewEmail}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -60,7 +65,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Username" Keyboard="Email"></Entry>
+                    <Entry Text="{Binding NewUsername}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Username" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -71,7 +76,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Keyboard="Email"></Entry>
+                    <Entry Text="{Binding NewPassword}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -82,7 +87,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Re-password"  Keyboard="Text"></Entry>
+                    <Entry Text="{Binding NewRepassword}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Re-password"  Keyboard="Text"></Entry>
 
                 </Frame>
 
@@ -101,7 +106,7 @@
                 HorizontalTextAlignment="Center"
                 />
                 
-                <DatePicker FontSize="14" x:Name="birthDatePicker" Date="{Binding BirthDate}" VerticalOptions="Center"/>
+                <DatePicker FontSize="14" x:Name="birthDatePicker" Date="{Binding NewBirthdate}" VerticalOptions="Center"/>
                 
 
             </StackLayout>
@@ -118,8 +123,8 @@
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center"
                 />
-                <RadioButton VerticalOptions="Center" FontSize="14" x:Name="maleRadioButton" Content="Male" />
-                <RadioButton VerticalOptions="Center" FontSize="14" x:Name="femaleRadioButton" Content="Female" />
+                <RadioButton IsChecked="{Binding IsGenderMale}" VerticalOptions="Center" FontSize="14" x:Name="maleRadioButton" Content="Male" />
+                <RadioButton IsChecked="{Binding IsGenderFemale}" VerticalOptions="Center" FontSize="14" x:Name="femaleRadioButton" Content="Female" />
 
             </StackLayout>
             <StackLayout Orientation="Horizontal">
@@ -128,11 +133,11 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="City"  Keyboard="Text"></Entry>
+                    <Entry Text="{Binding NewCity}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="City"  Keyboard="Text"></Entry>
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry VerticalOptions="Center" Placeholder="Country"  Keyboard="Text"></Entry>
+                    <Entry Text="{Binding NewCountry}" VerticalOptions="Center" Placeholder="Country"  Keyboard="Text"></Entry>
 
                 </Frame>
 
@@ -143,11 +148,11 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Town"  Keyboard="Text"></Entry>
+                    <Entry Text="{Binding NewTown}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Town"  Keyboard="Text"></Entry>
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry VerticalOptions="Center" Placeholder="District"  Keyboard="Text"></Entry>
+                    <Entry Text="{Binding NewDistrict}" VerticalOptions="Center" Placeholder="District"  Keyboard="Text"></Entry>
 
                 </Frame>
 
@@ -157,6 +162,7 @@
             <Button
                 x:Name="SignUpBtn"
                 Text="Sign Up"
+                Command="{Binding SignupRegisterCommand}"
                 SemanticProperties.Hint="You can login to your account!"
                 WidthRequest="100"
                 CornerRadius="50"

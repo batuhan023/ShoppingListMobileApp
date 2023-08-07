@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.Maui.Handlers;
 using ShoppingListMobileApp1.Models;
+using ShoppingListMobileApp1.ViewModels;
+
+
 
 namespace ShoppingListMobileApp1;
 
@@ -8,13 +11,21 @@ public partial class ItemPageView : ContentPage
 {
     public ObservableCollection<FairyTale> FairyTales { get; set; }
     public ObservableCollection<FairyTale> FairyTales2 { get; set; }
+    private readonly NotificationsViewModel viewModel;
+    private NotificationsViewModel notificationsViewModel;
     public ItemPageView()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         ModifySearchBar();
         InitializeTales();
         BindingContext = this;
-        
+
+        // NotificationCountLabel için güncel bildirim sayısını ata
+        viewModel = new NotificationsViewModel();
+        NotificationCountLabel.Text = viewModel.NewCountNotification;
+        notificationsViewModel = new NotificationsViewModel();
+        BindingContext = notificationsViewModel;
+
     }
 
     private void InitializeTales()
@@ -60,5 +71,8 @@ public partial class ItemPageView : ContentPage
         Navigation.PushAsync(new ProfilePage());
     }
 
-    
+    private void NotificationCountLabel_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new NotificationsPageView());
+    }
 }
