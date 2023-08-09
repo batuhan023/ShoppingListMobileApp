@@ -1,21 +1,7 @@
-﻿using Azure;
-using EntityLayer.DTOs;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using EntityLayer.DTOs;
 using Newtonsoft.Json;
-using Org.Apache.Http.Protocol;
 using ShoppingListMobileApp1.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingListMobileApp1.Services
 {
@@ -38,42 +24,29 @@ namespace ShoppingListMobileApp1.Services
             _httpClient.Timeout = TimeSpan.FromSeconds(400);
         }
 
-        //public async Task<User> Login(string email, string password)
-        //{
-        //    var dto = new LoginDTO { Email = email, Password = password }; 
-        //    var response = await _httpClient.PostAsync(ApiUrl + "Users/login", new StringContent(""));
 
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        //Application.Current.MainPage.Navigation.PushAsync(new HomePage());
-
-        //        //return Response.("YeniSayfa.aspx");
-        //        var user = await response.Content.ReadAsAsync<User>();
-        //        return user;
-
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        public async Task<User> Login(string username, string password)
+        //Login Service
+        public async Task<User> Login(string email, string password)
         {
-            var dto = new LoginDTO { Email = username, Password = password };
-            var content = new StringContent(JsonConvert.SerializeObject(dto), Encoding.UTF8, "application/json");
+            //var dto = new LoginDTO { Email = username, Password = password };
+            //var content = new StringContent(JsonConvert.SerializeObject(dto), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync(ApiUrl + "Users/login", content);
+            //var response = await _httpClient.PostAsync(ApiUrl + "Users/login", content);
+
+            var response = await _httpClient.GetAsync($"{ApiUrl}Users/UserLogin?UserEmail={email}&UserPassword={password}");
+
+
             //var response = await _httpClient.PostAsync($"{ApiUrl}Users/login?email={username}&password={password}", content);
             //var response = await _httpClient.PostAsync($"{ApiUrl}Users/Login?email={username}&password={password}");
-            TokenDTO model = new();
+            //TokenDTO model = new();
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
                 //var data = JsonConvert.DeserializeObject<List<User>>(jsonString);
                 //var responseData = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
-                var user = JsonConvert.DeserializeObject<User>(jsonString);
+                var data = JsonConvert.DeserializeObject<List<User>>(jsonString);
+
                 //return data.FirstOrDefault();
                 //if (responseData.ContainsKey("access_token"))
                 //{
@@ -81,12 +54,43 @@ namespace ShoppingListMobileApp1.Services
                 // Token'ı kullanmak için yapılacak işlemler
                 // Örneğin, Preferences'e kaydedebilir, diğer API çağrıları için kullanabilirsiniz.
 
-                return user;
+                return data.FirstOrDefault();
             }
             else
             {
                 return null;
             }
         }
-    }
+
+
+        //Register service
+        public async Task<bool> RegisterUser(RegisterDTO user)
+        {
+            // JSON'a serialize ederek içeriği hazırla
+            var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+
+            try
+            {
+                // API'ye Post isteği gönder
+                var response = await _httpClient.PostAsync(ApiUrl + "Users/register", content);
+
+                // Yanıt başarılı mı kontrol et
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Kayıt başarılı
+                }
+                else
+                {
+                    return false; // Kayıt başarısız
+                }
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda işlemleri burada yönet
+                // Örneğin hata mesajını loglamak, kullanıcıya hata mesajı göstermek vb.
+
+                return false;
+            }
+        }
+        }
 }

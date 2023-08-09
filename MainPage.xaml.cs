@@ -31,12 +31,13 @@ public partial class MainPage : ContentPage
             {
 
                 //Bilgiler preferencese kaydedilir 
-                //Preferences.Set("UserId", users.Id);
-                //Preferences.Set("UserName", users.UserName);
-                //Preferences.Set("UserEmail", users.Email);
-                //Preferences.Set("UserPassword", users.Password);
+                Preferences.Set("UserId", users.Id);
+                Preferences.Set("UserName", users.UserName);
+                Preferences.Set("UserEmail", users.Email);
+                Preferences.Set("UserPassword", users.Password);
+              
 
-                await Navigation.PushAsync(new HomePage());
+                Navigation.PushAsync(new HomePage());
 
             }
             else

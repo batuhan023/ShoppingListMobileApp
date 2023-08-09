@@ -11,6 +11,7 @@ public partial class HomePage : ContentPage
     public HomePage()
     {
         InitializeComponent();
+        LblUserName.Text = "Hi " + Preferences.Get("UserName", string.Empty);
         InitializeTales();
         BindingContext = this;
     }
@@ -50,7 +51,7 @@ public partial class HomePage : ContentPage
     }
     private void Button_Clicked_Search(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new HomePage());
+        //Navigation.PushAsync(new HomePage());
     }
     private void Button_Clicked_Cart(object sender, EventArgs e)
     {

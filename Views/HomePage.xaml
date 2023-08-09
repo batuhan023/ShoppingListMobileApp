@@ -13,7 +13,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <VerticalStackLayout Grid.Row="0" Spacing="5">
-                <Label Text="Hi Batuhan!"
+                <Label TextColor="Black"
                        FontSize="Large"
                        x:Name="LblUserName"/>
                 <Image Source="monovi_logo_grey.png"
