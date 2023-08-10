@@ -21,7 +21,7 @@ namespace ShoppingListMobileApp1.Services
             };
 
             _httpClient = new HttpClient(handler);
-            _httpClient.Timeout = TimeSpan.FromSeconds(400);
+            
         }
 
 

@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ShoppingListMobileApp1"
-    Shell.FlyoutBehavior="Flyout">
+    Shell.FlyoutBehavior="Flyout"
+    xmlns:view="clr-namespace:ShoppingListMobileApp1.Views">
     
     
 
-    <TabBar x:Name="MyTabBar">
+    <!--<TabBar x:Name="MyTabBar">
         <Tab Title="Home"
              Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
@@ -21,7 +22,22 @@
              Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" Route="ProfilePage"/>
         </Tab>
+    </TabBar>-->
+
+
+    <TabBar>
+        <ShellContent Title="Home"
+                      ContentTemplate="{DataTemplate local:HomePage}"
+                      Icon="home.png"/>
+        <ShellContent Title="Cart"
+                      ContentTemplate="{DataTemplate local:CartPageView}"
+                      Icon="cart.png"/>
+        <ShellContent Title="Profile"
+                      ContentTemplate="{DataTemplate local:ProfilePage}"
+                      Icon="user.png"/>
+
     </TabBar>
+    
     
     <ShellContent
         Title="Login Page"

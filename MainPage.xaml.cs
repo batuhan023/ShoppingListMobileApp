@@ -37,7 +37,7 @@ public partial class MainPage : ContentPage
                 Preferences.Set("UserPassword", users.Password);
               
 
-                Navigation.PushAsync(new HomePage());
+                await Navigation.PushAsync(new HomePage());
 
             }
             else
