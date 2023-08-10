@@ -2,6 +2,7 @@
 using Microsoft.Maui.Controls;
 using System;
 using ShoppingListMobileApp1.Services;
+using ShoppingListMobileApp1.Views;
 
 namespace ShoppingListMobileApp1;
 
@@ -35,7 +36,8 @@ public partial class MainPage : ContentPage
                 Preferences.Set("UserName", users.UserName);
                 Preferences.Set("UserEmail", users.Email);
                 Preferences.Set("UserPassword", users.Password);
-              
+
+                //Application.Current.MainPage = new CustomTabbedPage(); // TaCustom tabbar ile alakalı
 
                 await Navigation.PushAsync(new HomePage());
 

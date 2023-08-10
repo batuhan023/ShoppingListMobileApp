@@ -1,19 +1,18 @@
-ï»¿using EntityLayer.DTOs;
+using EntityLayer.DTOs;
 using ShoppingListMobileApp1.Models;
 using ShoppingListMobileApp1.Services;
-using ShoppingListMobileApp1.Views;
 using System.Collections.ObjectModel;
 
-namespace ShoppingListMobileApp1;
+namespace ShoppingListMobileApp1.Views;
 
-public partial class HomePage : ContentPage
+public partial class HomePage1 : ContentPage
 {
     private readonly CategoriesService _categroiesService = new CategoriesService();
-    private readonly ItemService _Ä±temService = new ItemService();
+    private readonly ItemService _ýtemService = new ItemService();
     public ObservableCollection<FairyTale> FairyTales { get; set; }
     public ObservableCollection<Products> product { get; set; }
     public ObservableCollection<Products> product2 { get; set; }
-    public HomePage()
+    public HomePage1()
     {
         InitializeComponent();
         LblUserName.Text = "Hi " + Preferences.Get("UserName", string.Empty);
@@ -31,7 +30,7 @@ public partial class HomePage : ContentPage
     }
     private async Task<List<GetItemDTO>> GetItems()
     {
-        List<GetItemDTO> Items = await _Ä±temService.GetAllItems();
+        List<GetItemDTO> Items = await _ýtemService.GetAllItems();
         AllItem.ItemsSource = Items;
         return Items;
     }
@@ -83,11 +82,11 @@ public partial class HomePage : ContentPage
         Navigation.PushAsync(new TechnologyPage());
     }
 
-    void Categoreis_SelectionChanged(object sender, Microsoft.Maui.Controls.SelectionChangedEventArgs e)
+    private void Categoreis_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var currentselection = e.CurrentSelection.FirstOrDefault() as GetCategoryDetailDTO;
-        if (currentselection == null) return;
-        Navigation.PushAsync(new CategoryPage1(currentselection.Id,currentselection.Name));
+        var currentselection = e.CurrentSelection.FirstOrDefault() as Category;
+        if (currentselection != null) return;
+        Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
         ((CollectionView)sender).SelectedItem = null;
     }
 }

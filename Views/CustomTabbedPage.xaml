@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:ShoppingListMobileApp1.Views" 
+            x:Class="ShoppingListMobileApp1.Views.CustomTabbedPage"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            SelectedTabColor="#1d94ab"
+            UnselectedTabColor="#78909c">
+
+    <!--<NavigationPage Title="Home" IconImageSource="home.png">
+        <x:Arguments>
+            <local:HomePage1/>
+        </x:Arguments>
+    </NavigationPage>
+    <local:CartPage1 Title="Cart" IconImageSource="cart.png"/>
+    <local:ProfilePage1 Title="Profile" IconImageSource="user.png"/>-->
+</TabbedPage>
