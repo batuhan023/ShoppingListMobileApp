@@ -57,6 +57,17 @@ namespace ShoppingListMobileApp1
             }
         }
 
+        private int newPhonenumber;
+        public int NewPhonenumber
+        {
+            get { return newPhonenumber; }
+            set
+            {
+                newPhonenumber = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string newUsername;
         public string NewUsername
         {
@@ -202,6 +213,7 @@ namespace ShoppingListMobileApp1
                 Name = NewName,
                 Surname = NewSurname,
                 Email = NewEmail,
+                Phonenumber = NewPhonenumber,
                 Username = NewUsername,
                 Password = NewPassword,
                 City = NewCity,
@@ -215,11 +227,12 @@ namespace ShoppingListMobileApp1
             NewName = string.Empty;
             NewSurname = string.Empty;
             NewEmail = string.Empty;
+            NewPhonenumber = 0;
             NewUsername = string.Empty;
             NewPassword = string.Empty;
             NewRepassword = string.Empty;
-            newBirthdate = string.Empty;
-            newCity = string.Empty;
+            NewBirthdate = string.Empty;
+            NewCity = string.Empty;
             NewCountry = string.Empty;
             NewTown = string.Empty;
             NewDistrict = string.Empty;
@@ -260,6 +273,17 @@ namespace ShoppingListMobileApp1
             set
             {
                 email = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int phonenumber;
+        public int Phonenumber
+        {
+            get { return phonenumber; }
+            set
+            {
+                phonenumber = value;
                 OnPropertyChanged();
             }
         }

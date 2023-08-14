@@ -30,20 +30,20 @@
                 
                 HorizontalTextAlignment="Center"
                 />
-                
+
 
             </VerticalStackLayout>
             <StackLayout Orientation="Horizontal">
-                <Frame  HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
                     <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="Name" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Name" Keyboard="Email"></Entry>
+                    <Entry x:Name="Name" Text="{Binding NewName}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Name" Keyboard="Email"></Entry>
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="Surname" VerticalOptions="Center" Placeholder="Surname" Keyboard="Email"></Entry>
+                    <Entry x:Name="SurName" Text="{Binding NewSurname}" VerticalOptions="Center" Placeholder="Surname" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -54,7 +54,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="Email" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email"></Entry>
+                    <Entry x:Name="Email" Text="{Binding NewEmail}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -65,7 +65,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="PhoneNumber" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Phone Number" Keyboard="Email"></Entry>
+                    <Entry x:Name="PhoneNumber" Text="{Binding NewPhonenumber}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Phone Number" Keyboard="Telephone"></Entry>
 
                 </Frame>
 
@@ -76,7 +76,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="Username" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Username" Keyboard="Email"></Entry>
+                    <Entry x:Name="UserName" Text="{Binding NewUsername}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Username" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -87,7 +87,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="Password" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Keyboard="Email"></Entry>
+                    <Entry x:Name="Password" Text="{Binding NewPassword}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Keyboard="Email"></Entry>
 
                 </Frame>
 
@@ -98,7 +98,7 @@
 
                 </Frame>
                 <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <Entry  Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Re-password"  Keyboard="Text"></Entry>
+                    <Entry Text="{Binding NewRepassword}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Re-password"  Keyboard="Text"></Entry>
 
                 </Frame>
 
@@ -116,9 +116,9 @@
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center"
                 />
-                
-                <DatePicker FontSize="14" x:Name="birthDatePicker"  VerticalOptions="Center"/>
-                
+
+                <DatePicker FontSize="14" x:Name="BirthDate" Date="{Binding NewBirthdate}" VerticalOptions="Center"/>
+
 
             </StackLayout>
             <StackLayout Orientation="Horizontal">
@@ -134,12 +134,41 @@
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center"
                 />
-                <RadioButton  VerticalOptions="Center" FontSize="14" x:Name="maleRadioButton" Content="Male" CheckedChanged="RadioButton_CheckedChanged" />
-                <RadioButton  VerticalOptions="Center" FontSize="14" x:Name="femaleRadioButton" Content="Female" CheckedChanged="RadioButton_CheckedChanged"/>
+                <RadioButton IsChecked="{Binding IsGenderMale}" VerticalOptions="Center" FontSize="14" x:Name="maleRadioButton" Content="Male" />
+                <RadioButton IsChecked="{Binding IsGenderFemale}" VerticalOptions="Center" FontSize="14" x:Name="femaleRadioButton" Content="Female" />
 
             </StackLayout>
+            <!--<StackLayout Orientation="Horizontal">
+                <Frame HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
 
-            
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding NewCity}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="City"  Keyboard="Text"></Entry>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding NewCountry}" VerticalOptions="Center" Placeholder="Country"  Keyboard="Text"></Entry>
+
+                </Frame>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="26" BorderColor="White">
+                    <Image Source="profile_image.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding NewTown}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Town"  Keyboard="Text"></Entry>
+
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" HasShadow="True" Padding="0" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding NewDistrict}" VerticalOptions="Center" Placeholder="District"  Keyboard="Text"></Entry>
+
+                </Frame>
+
+            </StackLayout>-->
+
 
             <Button
                 x:Name="SignUpBtn"
@@ -153,10 +182,9 @@
                 BackgroundColor="Red"
                 HorizontalOptions="Center"
                 Clicked="SignUpBtn_Clicked"/>
-            
+
 
         </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
-
