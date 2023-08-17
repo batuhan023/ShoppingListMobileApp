@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ShoppingListMobileApp1.Views.CategoryPage1"
-             Title="CategoryPage1">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="ShoppingListMobileApp1.Views.CategoryPage1">
+
+    <CollectionView x:Name="categoryDetail"
+                    SelectionMode="Single"
+                    Margin="10">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout ItemSpacing="20"
+                               Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0"
+                           CornerRadius="10"
+                           Padding="0"
+                           IsClippedToBounds="True">
+                        <Image HeightRequest="160"
+                               Aspect="Fill"/>
+                    </Frame>
+                    <StackLayout Grid.Column="1"
+                                 Padding="15"
+                                 Spacing="10">
+                        <Label FontSize="Medium"/>
+                        <Label FontSize="Small"/>
+                        <Label FontSize="Small"/>
+                    </StackLayout>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

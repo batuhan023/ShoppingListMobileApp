@@ -84,9 +84,9 @@ public partial class HomePage1 : ContentPage
 
     private void Categoreis_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var currentselection = e.CurrentSelection.FirstOrDefault() as Category;
-        if (currentselection != null) return;
-        Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
-        ((CollectionView)sender).SelectedItem = null;
+        //var currentselection = e.CurrentSelection.FirstOrDefault() as Category;
+        //if (currentselection == null) return;
+        //Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
+        //((CollectionView)sender).SelectedItem = null;
     }
 }

@@ -15,4 +15,9 @@
     </NavigationPage>
     <local:CartPage1 Title="Cart" IconImageSource="cart.png"/>
     <local:ProfilePage1 Title="Profile" IconImageSource="user.png"/>-->
+    <NavigationPage Title="Home" IconImageSource="home_icon" BarBackgroundColor="#1d94ab" BarTextColor="White">
+        <x:Arguments>
+            <local:HomePage1/>
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>

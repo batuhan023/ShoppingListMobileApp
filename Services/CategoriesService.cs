@@ -40,5 +40,21 @@ namespace ShoppingListMobileApp1.Services
                 return null;
             }
         }
+
+        public async Task<List<GetCategoryDTO>> GetCategoriesById(int categoryid)
+        {
+            var response = await _httpClient.GetAsync($"{ApiUrl}Categories/getById/" + categoryid);
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                List<GetCategoryDTO> categories = JsonConvert.DeserializeObject<List<GetCategoryDTO>>(content);
+                return categories;
+            }
+            else
+            {
+                // API'den veri alınırken hata oluştu
+                return null;
+            }
+        }
     }
 }

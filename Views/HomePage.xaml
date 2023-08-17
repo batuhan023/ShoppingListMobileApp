@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShoppingListMobileApp1.HomePage"
              >
+    
     <ScrollView>
         <Grid Margin="20" RowSpacing="20">
             <Grid.RowDefinitions>
@@ -60,6 +61,10 @@
                                     <Label VerticalOptions="Center"
                                            FontSize="Medium"
                                            Text="{Binding Name}"/>
+                                    <Button Clicked="Button_Clicked"
+                                            CommandParameter="{Binding .}">
+                                        
+                                    </Button>
                                 </HorizontalStackLayout>
                             </Frame>
                         </DataTemplate>

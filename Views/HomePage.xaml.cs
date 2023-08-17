@@ -18,7 +18,7 @@ public partial class HomePage : ContentPage
         InitializeComponent();
         LblUserName.Text = "Hi " + Preferences.Get("UserName", string.Empty);
         InitializeTales();
-        BindingContext = this;
+        //BindingContext = this;
         GetCategories();
         GetItems();
     }
@@ -85,9 +85,19 @@ public partial class HomePage : ContentPage
 
     void Categoreis_SelectionChanged(object sender, Microsoft.Maui.Controls.SelectionChangedEventArgs e)
     {
-        var currentselection = e.CurrentSelection.FirstOrDefault() as GetCategoryDetailDTO;
+        var currentselection = e.CurrentSelection.FirstOrDefault() as GetCategoryDTO;
         if (currentselection == null) return;
         Navigation.PushAsync(new CategoryPage1(currentselection.Id,currentselection.Name));
         ((CollectionView)sender).SelectedItem = null;
     }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        var currentselection = button?.CommandParameter as GetCategoryDTO;
+        if (currentselection == null) return;
+        Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
+        button.CommandParameter = null; // CommandParameter'ı temizle
+    }
+
 }
