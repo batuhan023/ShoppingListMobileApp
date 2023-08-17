@@ -1,40 +1,70 @@
-﻿using System;
+﻿
+using EntityLayer.DTOs;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ShoppingListMobileApp1
 {
     public class AddressViewModel : BindableObject
     {
+        //public List<GetAddressDTO> _returnedValue;
+        //public List<GetAddressDTO> ReturnedValue
+        //{
+        //    get { return _returnedValue; }
+        //    set
+        //    {
+        //        _returnedValue = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        //private void AnotherMethod()
+        //{
+        //    string selectedAddress = ReturnedValue; // Bu, AdressPage.xaml.cs içinde seçilen adresi içerecek
+        //                                              // Seçilen adresle ilgili işlemleri burada yapabilirsiniz
+        //}
+
         public AddressViewModel()
         {
-            // Örnek hayali adresler oluştur
-            Addresses = new ObservableCollection<Address>
-            {
-                new Address {Name = "Ev", Country = "Country A", City = "City A", Neighborhood = "Neighborhood A", PostalCode = "12345", AddressText = "123 Main St" },
-                new Address {Name = "İş", Country = "Country B", City = "City B", Neighborhood = "Neighborhood B", PostalCode = "67890", AddressText = "456 Elm St" },
-                new Address {Name = "Okul", Country = "Country C", City = "City C", Neighborhood = "Neighborhood C", PostalCode = "54321", AddressText = "789 Oak St" }
-            };
-
             // Komutlar oluştur
             EditCommand = new Command(OnEdit);
             DeleteCommand = new Command(OnDelete);
             AddAddressCommand = new Command(OnAddAddress);
             SaveAddressCommand = new Command(OnSaveAddress);
             CancelAddAddressCommand = new Command(OnCancelAddAddress);
+            HideAddAddressCommand = new Command(OnHideAddAddress);
 
             // Yeni adres eklemeyi gizle
-            IsAddingAddress = false;
-            IsAddressSelected = false;
-            AddAddressButton = true;
+            OnHideAddAddress();
         }
 
         // Adresler koleksiyonu
-        public ObservableCollection<Address> Addresses { get; set; }
+        public List<GetAddressDTO> _addresses;
+        public List<GetAddressDTO> Addresses
+        {
+            get { return _addresses; }
+            set
+            {
+                _addresses = value;
+                OnPropertyChanged(nameof(Addresses));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        //public List<GetAddressDTO> Addresses { get; set; }
+
+        //public List<GetAddressDTO> Addresses = _addressPageView.getAddressById(LoggedInUser.Id);
 
         // Seçili adres
-        private Address selectedAddress;
-        public Address SelectedAddress
+        private GetAddressDTO selectedAddress;
+        public GetAddressDTO SelectedAddress
         {
             get { return selectedAddress; }
             set
@@ -81,6 +111,17 @@ namespace ShoppingListMobileApp1
         }
 
         // Yeni eklenen adres
+        private int newUserId;
+        public int NewUserId
+        {
+            get { return newUserId; }
+            set
+            {
+                newUserId = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string newName;
         public string NewName
         {
@@ -91,6 +132,7 @@ namespace ShoppingListMobileApp1
                 OnPropertyChanged();
             }
         }
+
         private string newCountry;
         public string NewCountry
         {
@@ -113,19 +155,41 @@ namespace ShoppingListMobileApp1
             }
         }
 
-        private string newNeighborhood;
-        public string NewNeighborhood
+        private string newTown;
+        public string NewTown
         {
-            get { return newNeighborhood; }
+            get { return newTown; }
             set
             {
-                newNeighborhood = value;
+                newTown = value;
                 OnPropertyChanged();
             }
         }
 
-        private string newPostalCode;
-        public string NewPostalCode
+        private string newDistrictName;
+        public string NewDistrictName
+        {
+            get { return newDistrictName; }
+            set
+            {
+                newDistrictName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //private string newNeighborhood;
+        //public string NewNeighborhood
+        //{
+        //    get { return newNeighborhood; }
+        //    set
+        //    {
+        //        newNeighborhood = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        private int newPostalCode;
+        public int NewPostalCode
         {
             get { return newPostalCode; }
             set
@@ -152,6 +216,7 @@ namespace ShoppingListMobileApp1
         public ICommand AddAddressCommand { get; }
         public ICommand SaveAddressCommand { get; }
         public ICommand CancelAddAddressCommand { get; }
+        public ICommand HideAddAddressCommand { get; }
 
         // Düzenleme komutu işlemi
         private void OnEdit()
@@ -160,6 +225,7 @@ namespace ShoppingListMobileApp1
             {
                 Application.Current.MainPage.Navigation.PushAsync(new EditAddressPage(selectedAddress));
             }
+            OnHideAddAddress();
         }
 
         // Silme komutu işlemi
@@ -170,8 +236,10 @@ namespace ShoppingListMobileApp1
             // Seçili adresi null kontrolü yaparak silme işlemini gerçekleştirelim
             if (SelectedAddress != null)
             {
-                Addresses.Remove(SelectedAddress);
+                //Addresses.Remove(SelectedAddress);
                 SelectedAddress = null; // Seçili adresi sıfırlayalım
+
+                OnPropertyChanged(nameof(Addresses));
             }
         }
 
@@ -188,25 +256,32 @@ namespace ShoppingListMobileApp1
         private void OnSaveAddress()
         {
             // Yeni adresi koleksiyona ekleyelim
-            Addresses.Add(new Address
+            Addresses.Add(new GetAddressDTO
             {
-                Name = NewName,
-                Country = NewCountry,
-                City = NewCity,
-                Neighborhood = NewNeighborhood,
-                PostalCode = NewPostalCode,
+                UserID = NewUserId,
+                AddressName = NewName,
+                CountryName = NewCountry,
+                CityName = NewCity,
+                TownName = NewTown,
+                DistrictName = NewDistrictName,
+                PostCode = NewPostalCode,
                 AddressText = NewAddressText
             });
 
             // Yeni adres eklemeyi gizle ve formu sıfırla
             IsAddingAddress = false;
             AddAddressButton = true;
-            NewName = string.Empty;
-            NewCountry = string.Empty;
-            NewCity = string.Empty;
-            NewNeighborhood = string.Empty;
-            NewPostalCode = string.Empty;
-            NewAddressText = string.Empty;
+
+            OnPropertyChanged(nameof(Addresses));
+
+            //NewUserId = 0;
+            //NewName = string.Empty;
+            //NewCountry = string.Empty;
+            //NewCity = string.Empty;
+            //NewTown = string.Empty;
+            //NewDistrictName = string.Empty;
+            //NewPostalCode = 0;
+            //NewAddressText = string.Empty;
         }
 
         // Yeni adres eklemeyi iptal etme komutu işlemi
@@ -218,77 +293,118 @@ namespace ShoppingListMobileApp1
             NewName = string.Empty;
             NewCountry = string.Empty;
             NewCity = string.Empty;
-            NewNeighborhood = string.Empty;
-            NewPostalCode = string.Empty;
+            NewPostalCode = 0;
             NewAddressText = string.Empty;
         }
+
+        private void OnHideAddAddress()
+        {
+            IsAddingAddress = false;
+            IsAddressSelected = false;
+            AddAddressButton = true;
+        }
     }
 
-    public class Address : BindableObject
-    {
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged();
-            }
-        }
-        private string country;
-        public string Country
-        {
-            get { return country; }
-            set
-            {
-                country = value;
-                OnPropertyChanged();
-            }
-        }
+    //public class Address : BindableObject
+    //{
+    //    private int userId;
+    //    public int UserId
+    //    {
+    //        get { return userId; }
+    //        set
+    //        {
+    //            userId = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
 
-        private string city;
-        public string City
-        {
-            get { return city; }
-            set
-            {
-                city = value;
-                OnPropertyChanged();
-            }
-        }
+    //    private string name;
+    //    public string Name
+    //    {
+    //        get { return name; }
+    //        set
+    //        {
+    //            name = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
 
-        private string neighborhood;
-        public string Neighborhood
-        {
-            get { return neighborhood; }
-            set
-            {
-                neighborhood = value;
-                OnPropertyChanged();
-            }
-        }
+    //    private string country;
+    //    public string Country
+    //    {
+    //        get { return country; }
+    //        set
+    //        {
+    //            country = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
 
-        private string postalCode;
-        public string PostalCode
-        {
-            get { return postalCode; }
-            set
-            {
-                postalCode = value;
-                OnPropertyChanged();
-            }
-        }
+    //    private string city;
+    //    public string City
+    //    {
+    //        get { return city; }
+    //        set
+    //        {
+    //            city = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
 
-        private string addressText;
-        public string AddressText
-        {
-            get { return addressText; }
-            set
-            {
-                addressText = value;
-                OnPropertyChanged();
-            }
-        }
-    }
+    //    private string town;
+    //    public string Town
+    //    {
+    //        get { return town; }
+    //        set
+    //        {
+    //            town = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+
+    //    private string districtName;
+    //    public string DistrictName
+    //    {
+    //        get { return districtName; }
+    //        set
+    //        {
+    //            districtName = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+
+    //    //private string neighborhood;
+    //    //public string Neighborhood
+    //    //{
+    //    //    get { return neighborhood; }
+    //    //    set
+    //    //    {
+    //    //        neighborhood = value;
+    //    //        OnPropertyChanged();
+    //    //    }
+    //    //}
+
+    //    private int postalCode;
+    //    public int PostalCode
+    //    {
+    //        get { return postalCode; }
+    //        set
+    //        {
+    //            postalCode = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+
+    //    private string addressText;
+    //    public string AddressText
+    //    {
+    //        get { return addressText; }
+    //        set
+    //        {
+    //            addressText = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+    //}
+
 }

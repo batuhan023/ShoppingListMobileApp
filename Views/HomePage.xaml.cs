@@ -97,7 +97,7 @@ public partial class HomePage : ContentPage
         var currentselection = button?.CommandParameter as GetCategoryDTO;
         if (currentselection == null) return;
         Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
-        button.CommandParameter = null; // CommandParameter'ı temizle
+        /*button.CommandParameter = null;*/ // CommandParameter'ı temizle
     }
 
 }

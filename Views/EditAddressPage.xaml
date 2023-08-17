@@ -17,31 +17,44 @@
             <Label Text="Name" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0" />
             <Frame HeightRequest="45"
                     Padding="0">
-                <Entry Text="{Binding EditedAddress.Name}" Placeholder="Enter Country" />
+                <Entry Text="{Binding EditedAddress.AddressName}" Placeholder="Enter Country" />
             </Frame>
             <!-- Country Entry -->
             <Label Text="Country" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
             <Frame HeightRequest="45"
                     Padding="0">
-                <Entry Text="{Binding EditedAddress.Country}" Placeholder="Enter Country" />
+                <Entry Text="{Binding EditedAddress.CountryName}" Placeholder="Enter Country" />
             </Frame>
             <!-- City Entry -->
             <Label Text="City" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
             <Frame HeightRequest="45"
                     Padding="0">
-                <Entry Text="{Binding EditedAddress.City}" Placeholder="Enter City" />
+                <Entry Text="{Binding EditedAddress.CityName}" Placeholder="Enter City" />
+            </Frame>
+            <!-- Town Entry -->
+            <Label Text="Town" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
+            <Frame HeightRequest="45"
+                    Padding="0">
+                <Entry Text="{Binding EditedAddress.TownName}" Placeholder="Enter Town" />
+            </Frame>
+            <!-- District Entry -->
+            <Label Text="District" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
+            <Frame HeightRequest="45"
+                    Padding="0">
+                <Entry Text="{Binding EditedAddress.DistrictName}" Placeholder="Enter District" />
             </Frame>
             <!-- Neighborhood Entry -->
+            <!--
             <Label Text="Neighborhood" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
             <Frame HeightRequest="45"
                     Padding="0">
                 <Entry Text="{Binding EditedAddress.Neighborhood}" Placeholder="Enter Neighborhood" />
-            </Frame>
+            </Frame>-->
             <!-- Postal Code Entry -->
             <Label Text="Postal Code" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
             <Frame HeightRequest="45"
                     Padding="0">
-                <Entry Text="{Binding EditedAddress.PostalCode}" Placeholder="Enter Postal Code" />
+                <Entry Text="{Binding EditedAddress.PostCode}" Placeholder="Enter Postal Code" />
             </Frame>
             <!-- Address Text Entry -->
             <Label Text="Adress Text" FontSize="Subtitle" HorizontalOptions="Start" Margin="0, 5, 0, 0"/>
@@ -52,6 +65,7 @@
 
             <StackLayout Orientation="Horizontal" Padding="10" Margin="10,10,10,10" Spacing="10" HorizontalOptions="CenterAndExpand">
                 <Button Text="Save Changes" Command="{Binding SaveChangesCommand}"
+                        Clicked="SaveButton_Clicked"
                     WidthRequest="150"
                         CornerRadius="50"
                         TextColor="Black"

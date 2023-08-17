@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingListMobileApp1.ReminderPageView"
+             xmlns:viewModels="clr-namespace:ShoppingListMobileApp1.ViewModels"
+             Title="ReminderPageView">
+    <ContentPage.BindingContext>
+        <viewModels:ReminderPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Label Text="Set Reminder" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+
+        <DatePicker x:Name="datePicker" Date="{Binding SelectedDate}" MinimumDate="{Binding MinimumDate}" />
+
+        <TimePicker x:Name="timePicker" Time="{Binding SelectedTime}" />
+
+        <Button Text="Save" Clicked="Button_Clicked_Reminder" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+    </StackLayout>
+</ContentPage>

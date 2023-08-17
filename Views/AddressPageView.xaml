@@ -9,14 +9,15 @@
 
     <StackLayout>
         <!-- Address List -->
-        <ListView ItemsSource="{Binding Addresses}" 
+        <ListView x:Name="GetAddresses"
                   SelectionMode="Single"
-                  SelectedItem="{Binding SelectedAddress}">
+                  SelectedItem="{Binding SelectedAddress}"
+                  ItemSelected="GetAddresses_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding AddressName}" FontAttributes="Bold" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -24,31 +25,43 @@
         </ListView>
 
         <!-- Address Details -->
-        <StackLayout IsVisible="{Binding IsAddressSelected}" Margin="10,10,10,10">
+        <StackLayout IsVisible="{Binding IsAddressSelected}" x:Name="IsVisibleAddressSelected" Margin="10,10,10,10">
             <Label Text="Selected Address" FontSize="Title" HorizontalOptions="Center" />
             <Label Text="Name:" />
-            <Entry Text="{Binding SelectedAddress.Name}" Placeholder="Enter Name" />
+            <Entry Text="{Binding SelectedAddress.AddressName}" x:Name="SelectedAddressName" Placeholder="Enter Name" />
             <Label Text="Country:" />
-            <Entry Text="{Binding SelectedAddress.Country}" Placeholder="Enter Country" />
+            <Entry Text="{Binding SelectedAddress.CountryName}" Placeholder="Enter Country" />
             <Label Text="City:" />
-            <Entry Text="{Binding SelectedAddress.City}" Placeholder="Enter City" />
-            <Label Text="Neighborhood:" />
-            <Entry Text="{Binding SelectedAddress.Neighborhood}" Placeholder="Enter Neighborhood" />
+            <Entry Text="{Binding SelectedAddress.CityName}" Placeholder="Enter City" />
+            <Label Text="Town:" />
+            <Entry Text="{Binding SelectedAddress.TownName}" Placeholder="Enter Town" />
+            <Label Text="District:" />
+            <Entry Text="{Binding SelectedAddress.DistrictName}" Placeholder="Enter District" />
+            <!--<Label Text="Neighborhood:" />
+            <Entry Text="{Binding SelectedAddress.Neighborhood}" Placeholder="Enter Neighborhood" />-->
             <Label Text="Postal Code:" />
-            <Entry Text="{Binding SelectedAddress.PostalCode}" Placeholder="Enter Postal Code" />
+            <Entry Text="{Binding SelectedAddress.PostCode}" Placeholder="Enter Postal Code" />
             <Label Text="Address Text:" />
             <Entry Text="{Binding SelectedAddress.AddressText}" Placeholder="Enter Address" />
 
-            <StackLayout Orientation="Horizontal" Padding="10" Margin="10,10,10,10" Spacing="10" HorizontalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" Padding="10" Margin="0,10,0,10" Spacing="10" HorizontalOptions="CenterAndExpand">
                 <Button Text="Edit Address" Command="{Binding EditCommand}"
-                        WidthRequest="150"
+                        WidthRequest="120"
                         CornerRadius="50"
                         TextColor="Black"
                         FontAttributes="Bold"
                         BackgroundColor="Red"
                         HorizontalOptions="Center" />
                 <Button Text="Delete Address" Command="{Binding DeleteCommand}"
-                        WidthRequest="150"
+                        Clicked="DeleteButton_Clicked"
+                        WidthRequest="140"
+                        CornerRadius="50"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Center" />
+                <Button Text="\/" Command="{Binding HideAddAddressCommand}"
+                        WidthRequest="60"
                         CornerRadius="50"
                         TextColor="Black"
                         FontAttributes="Bold"
@@ -61,20 +74,25 @@
         <StackLayout IsVisible="{Binding IsAddingAddress}">
             <Label Text="Add Address" FontSize="Title" HorizontalOptions="Center" />
             <Label Text="Name:" />
-            <Entry Text="{Binding NewName}" Placeholder="Enter Name" />
+            <Entry Text="{Binding NewName}" x:Name="AddressName" Placeholder="Enter Name" />
             <Label Text="Country:" />
-            <Entry Text="{Binding NewCountry}" Placeholder="Enter Country" />
+            <Entry Text="{Binding NewCountry}" x:Name="Country" Placeholder="Enter Country" />
             <Label Text="City:" />
-            <Entry Text="{Binding NewCity}" Placeholder="Enter City" />
-            <Label Text="Neighborhood:" />
-            <Entry Text="{Binding NewNeighborhood}" Placeholder="Enter Neighborhood" />
+            <Entry Text="{Binding NewCity}" x:Name="City" Placeholder="Enter City" />
+            <Label Text="Town:" />
+            <Entry Text="{Binding NewTown}" x:Name="Town" Placeholder="Enter Town" />
+            <Label Text="District:" />
+            <Entry Text="{Binding NewDistrictName}" x:Name="District" Placeholder="Enter District" />
+            <!--<Label Text="Neighborhood:" />
+            <Entry Text="{Binding NewNeighborhood}" Placeholder="Enter Neighborhood" />-->
             <Label Text="Postal Code:" />
-            <Entry Text="{Binding NewPostalCode}" Placeholder="Enter Postal Code" />
+            <Entry Text="{Binding NewPostalCode}" x:Name="PostCode" Placeholder="Enter Postal Code" />
             <Label Text="Address Text:" />
-            <Entry Text="{Binding NewAddressText}" Placeholder="Enter Address" />
+            <Entry Text="{Binding NewAddressText}" x:Name="AddressText" Placeholder="Enter Address" />
 
             <StackLayout Orientation="Horizontal" Padding="10" Margin="10,10,10,10" Spacing="10" HorizontalOptions="CenterAndExpand">
                 <Button Text="Save" Command="{Binding SaveAddressCommand}"
+                        Clicked="SaveButton_Clicked"
                         WidthRequest="100"
                         CornerRadius="50"
                         TextColor="Black"

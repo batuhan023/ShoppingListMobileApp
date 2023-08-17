@@ -100,6 +100,10 @@
         Title="Phones Page"
         ContentTemplate="{DataTemplate local:PhonePage}"
         Route="PhonePage" />
+    <ShellContent
+        Title="Reminder Page"
+        ContentTemplate="{DataTemplate local:ReminderPageView}"
+        Route="ReminderPageView" />
     
     
     

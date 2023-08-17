@@ -5,6 +5,7 @@
 
     <CollectionView x:Name="categoryDetail"
                     SelectionMode="Single"
+                    SelectionChanged="categoryDetail_SelectionChanged"
                     Margin="10">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout ItemSpacing="20"
@@ -12,26 +13,40 @@
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="6*"/>
-                    </Grid.ColumnDefinitions>
-                    <Frame Grid.Column="0"
+                <Frame BorderColor="Red"
+                       Padding="15"
+                       CornerRadius="25"
+                       BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0"
                            CornerRadius="10"
                            Padding="0"
+                           
                            IsClippedToBounds="True">
-                        <Image HeightRequest="160"
-                               Aspect="Fill"/>
-                    </Frame>
-                    <StackLayout Grid.Column="1"
+                            <Image HeightRequest="160"
+                               Aspect="Fill"
+                               Source="{Binding Image}"/>
+                        </Frame>
+                        <StackLayout Grid.Column="1"
                                  Padding="15"
                                  Spacing="10">
-                        <Label FontSize="Medium"/>
-                        <Label FontSize="Small"/>
-                        <Label FontSize="Small"/>
-                    </StackLayout>
-                </Grid>
+                            <Label FontSize="Medium"
+                               Text="{Binding Title}"/>
+                            <Label FontSize="Small"
+                               Text="{Binding Description}"/>
+                            <Label FontSize="Small"
+                               Text="{Binding Price}"
+                               TextColor="Red"/>
+                            <Button Clicked="Button_Clicked"
+                                    CommandParameter="{Binding .}"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

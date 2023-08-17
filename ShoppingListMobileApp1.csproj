@@ -52,6 +52,7 @@
 	  <None Remove="Resources\Images\app.png" />
 	  <None Remove="Resources\Images\categories.png" />
 	  <None Remove="Resources\Images\menu.png" />
+	  <None Remove="Resources\Images\tap.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -124,6 +125,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\RegisterPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ReminderPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TechnologyPage.xaml">

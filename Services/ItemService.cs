@@ -1,4 +1,5 @@
-﻿using EntityLayer.DTOs;
+﻿using EntityLayer.Concrete;
+using EntityLayer.DTOs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,22 @@ namespace ShoppingListMobileApp1.Services
                 string content = await response.Content.ReadAsStringAsync();
                 List<GetItemDTO> categories = JsonConvert.DeserializeObject<List<GetItemDTO>>(content);
                 return categories;
+            }
+            else
+            {
+                // API'den veri alınırken hata oluştu
+                return null;
+            }
+        }
+
+        public async Task<List<Item>> GetItemsByCategory(int categoryId)
+        {
+            var response = await _httpClient.GetAsync($"{ApiUrl}Items/getItemsByCategoryId?categoryId={categoryId}");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Item>>(content);
+               
             }
             else
             {

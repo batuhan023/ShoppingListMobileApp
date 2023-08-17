@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls;
 using System;
 using ShoppingListMobileApp1.Services;
 using ShoppingListMobileApp1.Views;
+using EntityLayer.Concrete;
 
 namespace ShoppingListMobileApp1;
 
@@ -10,12 +11,19 @@ public partial class MainPage : ContentPage
 {
 
     private readonly LoginService _loginService = new LoginService();
-    public MainPage()
-	{
-		InitializeComponent();
-	}
+    public static User users { get; set; }
 
-	private void OnButtonClick(object sender, EventArgs e)
+    public MainPage()
+    {
+        InitializeComponent();
+    }
+
+    public User getUser()
+    {
+        return users;
+    }
+
+    private void OnButtonClick(object sender, EventArgs e)
 	{
         Navigation.PushAsync(new RegisterPageView());
     }

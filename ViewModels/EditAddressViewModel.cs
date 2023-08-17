@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EntityLayer.DTOs;
+using System;
 using System.Windows.Input;
 
 namespace ShoppingListMobileApp1
 {
     public class EditAddressViewModel : BindableObject
     {
-        public EditAddressViewModel(Address address)
+        public EditAddressViewModel(GetAddressDTO address)
         {
             // Düzenlenen adresi ayarla
             EditedAddress = address;
@@ -16,7 +17,7 @@ namespace ShoppingListMobileApp1
         }
 
         // Düzenlenen adres
-        public Address EditedAddress { get; set; }
+        public GetAddressDTO EditedAddress { get; set; }
 
         // Komutlar
         public ICommand SaveChangesCommand { get; }

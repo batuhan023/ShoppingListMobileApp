@@ -11,7 +11,7 @@ namespace ShoppingListMobileApp1
 {
     public partial class ItemDetailPageView : ContentPage
     {
-        public ItemDetailPageView()
+        public ItemDetailPageView(int ıtemId)
         {
             InitializeComponent();
             BindingContext = new ItemDetailPageViewModel();
