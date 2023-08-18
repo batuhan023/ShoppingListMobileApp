@@ -93,11 +93,18 @@ public partial class HomePage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        var button = sender as Button;
-        var currentselection = button?.CommandParameter as GetCategoryDTO;
-        if (currentselection == null) return;
-        Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
+        //var button = sender as Button;
+        //var currentselection = button?.CommandParameter as GetCategoryDTO;
+        //if (currentselection == null) return;
+        //Navigation.PushAsync(new CategoryPage1(currentselection.Id, currentselection.Name));
         /*button.CommandParameter = null;*/ // CommandParameter'ı temizle
+        var imageButton = sender as ImageButton;
+        var currentSelection = imageButton?.CommandParameter as GetCategoryDTO;
+
+        if (currentSelection == null)
+            return;
+
+        Navigation.PushAsync(new CategoryPage1(currentSelection.Id, currentSelection.Name));
     }
 
 }

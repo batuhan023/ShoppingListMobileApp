@@ -61,10 +61,13 @@
                                     <Label VerticalOptions="Center"
                                            FontSize="Medium"
                                            Text="{Binding Name}"/>
-                                    <Button Clicked="Button_Clicked"
+                                    <ImageButton Clicked="Button_Clicked"
+                                            Source="tap.png"
+                                                 WidthRequest="50"
+                                            Aspect="AspectFit"
                                             CommandParameter="{Binding .}">
                                         
-                                    </Button>
+                                    </ImageButton>
                                 </HorizontalStackLayout>
                             </Frame>
                         </DataTemplate>

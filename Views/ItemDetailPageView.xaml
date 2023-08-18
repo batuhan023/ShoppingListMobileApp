@@ -8,15 +8,17 @@
     <ContentPage.BindingContext>
         <viewModels:ItemDetailPageViewModel/>
     </ContentPage.BindingContext>
-    <Grid Margin="15" RowDefinitions=".4*,.1*,.1*,.4*" Padding="5">
+    <Grid Margin="15" RowDefinitions=".4*,.1*,.1*,.4*" Padding="5"
+          x:Name="grid">
         <Border Grid.RowSpan="2">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20,20,20,20"></RoundRectangle>
             </Border.StrokeShape>
             <Grid RowDefinitions=".3*,.7*">
                 <Image Grid.RowSpan="2"
+                       x:Name="Img"
                        Aspect="AspectFill"
-                       Source="{Binding ProductImage}"/>
+                       Source="{Binding Item.Image}"/>
                 <Grid ColumnDefinitions="*,*">
                     <Border Margin="15,35,0,0"
                             BackgroundColor="White"
@@ -59,6 +61,7 @@
 
         </Border>
         <Border Grid.Row="1"
+                x:Name="border"
                 MaximumHeightRequest="200"
                 Grid.RowSpan="2"
                 Stroke="DarkGray">
@@ -70,23 +73,26 @@
                   ColumnDefinitions=".5*,.25*,.25*"
                   RowDefinitions="*,*,*">
                 <Label Grid.ColumnSpan="2"
+                       x:Name="lblName"
                        FontAttributes="Bold"
                        FontFamily="RubikRegular"
                        FontSize="20"
-                       Text="{Binding ProductName}"
+                       Text="{Binding Item.Title}"
                        TextColor="White"/>
                 <Label Grid.Column="2"
+                       x:Name="lblPrice"
                        FontAttributes="Bold"
                        FontFamily="RubikRegular"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
-                       Text="{Binding Price}"
+                       Text="{Binding Item.Price}"
                        TextColor="Brown"/>
                 <Label Grid.Row="1"
+                       x:Name="lblBrand"
                        Grid.ColumnSpan="2"
                        FontFamily="RubikLight"
                        FontSize="15"
-                       Text="{Binding Brand}"
+                       Text="{Binding Item.Brand}"
                        TextColor="White"/>
                 <HorizontalStackLayout Grid.Row="2" Spacing="10">
                     <Label FontFamily="Icons"

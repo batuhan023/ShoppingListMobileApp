@@ -42,6 +42,15 @@
                                Text="{Binding Price}"
                                TextColor="Red"/>
                             <Button Clicked="Button_Clicked"
+                                    BackgroundColor="LightGray"
+                                    Margin="0,0,0,15"
+                                    Text="Go Detail"
+                                    VerticalOptions="Center"
+                                    HeightRequest="35"
+                                    FontSize="12"
+                                    WidthRequest="150"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"
                                     CommandParameter="{Binding .}"/>
                         </StackLayout>
                     </Grid>

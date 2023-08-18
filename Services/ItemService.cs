@@ -56,5 +56,21 @@ namespace ShoppingListMobileApp1.Services
                 return null;
             }
         }
+
+        public async Task<Item> GetItemsById(int itemId) 
+        {
+            var response = await _httpClient.GetAsync($"{ApiUrl}Items/getById?id={itemId}");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Item>(content);
+
+            }
+            else
+            {
+                // API'den veri alınırken hata oluştu
+                return null;
+            }
+        }
     }
 }
